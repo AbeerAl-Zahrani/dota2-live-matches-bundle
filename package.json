@@ -1,0 +1,118 @@
+{
+  "name": "vanguard-graphics-package",
+  "version": "0.0.1",
+  "description": "Vanguard Graphics Package",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:final": "rimraf ./.parcel-cache && rimraf ./dashboard && rimraf ./graphics && rimraf ./extension && rimraf ./common && yarn build:graphics && yarn build:dashboard && yarn build:extension",
+    "build:all": "yarn build:graphics && yarn build:dashboard && yarn build:extension",
+    "build:dashboard": "parcel build src/dashboard/*.html --dist-dir dashboard --public-url ./",
+    "build:graphics": "parcel build src/graphics/*.html --dist-dir graphics --public-url ./",
+    "build:extension": "tsc --skipLibCheck --outDir . ./src/extension/index.ts",
+    "watch:dashboard": "parcel watch --dist-dir dashboard --no-hmr --public-url . ./src/dashboard/*.html",
+    "watch:graphics": "parcel watch --dist-dir graphics --no-hmr --public-url . ./src/graphics/*.html",
+    "watch:extension": "tsc -w --skipLibCheck --outDir . ./src/extension/index.ts"
+  },
+  "author": "Vanguard",
+  "license": "ISC",
+  "devDependencies": {
+    "@nodecg/types": "^2.1.12",
+    "@parcel/transformer-sass": "2.11.0",
+    "@types/node-fetch": "^2.1.0",
+    "@types/react": "^17.0.3",
+    "@types/react-dom": "^17.0.3",
+    "@types/ws": "^8.5.10",
+    "parcel": "^2.11.0",
+    "prettier": "^3.2.5",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "@emotion/react": "11.8.2",
+    "@emotion/styled": "^11.8.1",
+    "@mui/icons-material": "5.5.0",
+    "@mui/lab": "5.0.0-alpha.74",
+    "@mui/material": "5.5.0",
+    "@nivo/core": "^0.80.0",
+    "@nivo/line": "^0.80.0",
+    "apexcharts": "3.41.0",
+    "axios": "^1.7.9",
+    "dotenv": "^16.4.7",
+    "framer-motion": "^6.2.9",
+    "lottie-react": "^2.4.0",
+    "moment": "^2.30.1",
+    "moment-timezone": "^0.5.34",
+    "node-fetch": "2.0.0",
+    "react": "^17.0.2",
+    "react-apexcharts": "^1.4.1",
+    "react-bodymovin": "^2.0.0",
+    "react-countdown": "2.3.2",
+    "react-dom": "^17.0.2",
+    "rimraf": "^5.0.5",
+    "socket.io-client": "4.5.1",
+    "styled-components": "^6.1.14",
+    "uuid": "^9.0.1",
+    "ws": "^8.16.0"
+  },
+  "nodecg": {
+    "compatibleRange": "^2.2.1",
+    "mount": [
+      {
+        "directory": "images",
+        "endpoint": "images"
+      },
+      {
+        "directory": "fonts",
+        "endpoint": "fonts"
+      }
+    ],
+    "dashboardPanels": [
+      {
+        "name": "lower-thirds",
+        "title": "Lower Thirds",
+        "width": 5,
+        "file": "LowerThirds.html",
+        "headerColor": "#087E86"
+      }
+    ],
+    "graphics": [
+      {
+        "file": "lowerthird.html",
+        "width": 1920,
+        "height": 1080
+      }
+    ],
+    "assetCategories": [
+      {
+        "name": "general-assets",
+        "title": "General Assets",
+        "allowedTypes": [
+          "jpg",
+          "jpeg",
+          "png",
+          "svg"
+        ]
+      },
+      {
+        "name": "team-logos",
+        "title": "Team Logos",
+        "allowedTypes": [
+          "jpg",
+          "jpeg",
+          "gif",
+          "png",
+          "svg"
+        ]
+      },
+      {
+        "name": "team-member-picture",
+        "title": "Team Member Pictures",
+        "allowedTypes": [
+          "jpg",
+          "jpeg",
+          "gif",
+          "png"
+        ]
+      }
+    ]
+  }
+}
